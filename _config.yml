@@ -2,3 +2,5 @@ theme: jekyll-theme-cayman
 title: Bootstrap row splitter for angular ng-repeat
 # Your name, as you want it to appear underneath each post and in the footer
 author: Jeeva J
+# Your email if you want it to be linked on the contact page
+author_email: jeevasusej@gmail.com
