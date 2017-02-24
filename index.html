@@ -14,7 +14,7 @@
 	 <script src="sample/script.js"></script>
 </head>
 <body ng-controller="demoController">
-<nav class="navbar navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -49,7 +49,19 @@
    </div>
    
    <section>
-   
+			<div class="row" >
+					<div ng-repeat="item in item1" class="col-sm-3">
+							<div class="panel panel-primary">
+								<div class="page-header">
+								{{item.name}}
+								</div>
+								<div class="page-body">
+								{{item.description}}
+								</div>
+							</div>
+					</div>
+			<div>
+			
    </section>
 </div>
 	
