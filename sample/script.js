@@ -16,5 +16,6 @@ angular.module('demo').controller('demoController',['$scope',function($scope){
 	,{name:'J.K. Rowling, Harry Potter and the Deathly Hallows', description:"Dumbledore watched her fly away, and as her silvery glow faded he turned back to Snape, and his eyes were full of tears."}
 	];
 	
-	
+	// assign values
+	$scope.item1=angular.copy(data);
 }]);
