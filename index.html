@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="demo">
 <head>
     <title>Angular bootstrap row splitter</title>
 	<meta charset="utf-8" />
@@ -52,10 +52,10 @@
 			<div class="row" >
 					<div ng-repeat="item in item1" class="col-sm-3">
 							<div class="panel panel-primary">
-								<div class="page-header">
+								<div class="panel-header">
 								{{item.name}}
 								</div>
-								<div class="page-body">
+								<div class="panel-body">
 								{{item.description}}
 								</div>
 							</div>
