@@ -281,6 +281,12 @@ $scope.arraySplit={
 
 </script>
 <script type="text/ng-template" id="_bootstrapRows.html">
+
+<h3 class="well">
+	Bootstrap rows using ng repeat. 
+	Rows columns will be collapsed.
+</h3>
+<br/>
  <div class="row" >
 					<div ng-repeat="item in item1" class="col-sm-3">
 							<div class="panel panel-primary">
@@ -296,7 +302,11 @@ $scope.arraySplit={
 </script>
 <script type="text/ng-template" id="_splittedBootstrapRows.html">
 	
-
+<h3 class="well">
+	After splitting the array, Bootstrap rows using ng repeat.
+	Equal size of rows for the different hight of the columns
+</h3>
+<br/>
   <div class="splitted-item-wrapper " 
          bootstrap-row-splitter
          shared-values="sharedValues"
