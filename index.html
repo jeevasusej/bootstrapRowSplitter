@@ -38,9 +38,9 @@
 </script>
 <script type="text/ng-template" id="_splittedBootstrapRows.html">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-12" style="margin-bottom:5px;">
 		<button class="btn btn-primary"
-				ng-click="vm.splitItems()">
+				ng-click="splitItems()">
 			Split the items
 		</button>
 		</div>
@@ -48,17 +48,19 @@
 
   <div class="splitted-item-wrapper " 
          bootstrap-row-splitter
-         shared-values="vm.sharedValues"
-         options="vm.arraySplit.options"
-         template-url="{{vm.arraySplit.templateUrl}}"
-         events="vm.arraySplit.events">
+         shared-values="sharedValues"
+         options="arraySplit.options"
+         template-url="{{arraySplit.templateUrl}}"
+         events="arraySplit.events">
 
     </div>
 </script>
 <script type="text/ng-template" id="_template.html">
- <div class="row mrg5B" ng-repeat="subItems in splitItems" ng-init="$parentIndex = $index">
+ <div class="row mrg5B" ng-repeat="subItems in splitItems" 
+ 						ng-init="$parentIndex = $index"
+						 ng-class="splitterParentClass[$parentIndex]">
     <div ng-repeat="item in subItems" ng-class="splitItemsClasses[$parentIndex][$index]">
-		<div class="panel panel-primary">
+		<div class="panel" ng-class="sharedValues.$parentScope.getPanelClass($index)">
 								<div class="panel-heading">
 								{{item.name}}
 								</div>

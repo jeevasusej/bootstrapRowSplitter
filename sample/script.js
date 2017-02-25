@@ -43,11 +43,11 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 }])
 .controller('splittedBoostrapRowsController',['$scope',function($scope){
 	// assign values
-	
-	
 	$scope.sharedValues={$parentScope:$scope};
+	$scope.getPanelClass=getPanelClass;
+	
 	$scope.arraySplit={
-		templateUrl:'_template.html?v='+(new Date()).getTime(),
+		templateUrl:'_template.html',
 		options:{
 				calculateOnResize: true,
                 initializeValue: function () {
@@ -61,7 +61,10 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
                     sm: 2,
                     md: 3,
                     lg: 4
-                }
+                },
+								firstSplitCustomClass:'firstSplitterClass',
+								arraySplitCustomClass:'arraySplitterClass',
+								splitterParentClass:'row-divider'
 		},
 		events:{
 			
@@ -70,12 +73,21 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 	
 	$scope.splitItems=splitItems;
 	
+	function getPanelClass(index){
+			if((index%4)==0)
+			return 'panel-primary';
+			else if((index%4)==1)
+			return 'panel-success';
+			else if((index%4)==2)
+			return 'panel-info';
+			else if((index%4)==3)
+			return 'panel-danger';
+	}
+
 	function splitItems(){
-		debugger
 		$scope.arraySplit.events.splitArray();	
 	}
 	
-	return $scope;
 }])
 .controller('demoController',['$scope',function($scope){
 	// assign values

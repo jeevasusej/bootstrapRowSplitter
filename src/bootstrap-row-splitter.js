@@ -122,6 +122,7 @@
                             scope.options.splitSize = 1;
 
                         scope.options.splitClasses = _bMedia.mediaClass;
+                        
                         if (scope.options.firstSplitSizes) {
                             var _firstSplit = scope.options.firstSplitSizes[detectedMedia.name];
                             if (_firstSplit && _firstSplit > 0) {
@@ -129,19 +130,36 @@
                                 i += _firstSplit;
                                 var _firstMediaClass = mediaClasses[detectedMedia.name];
                                 if (_firstMediaClass)
-                                    createClassArray(_firstMediaClass + (12 / _firstSplit), _firstSplit);
+                                {
+                                    _firstMediaClass=_firstMediaClass + (12 / _firstSplit)+" "+scope.options.firstSplitCustomClass;
+                                    createClassArray(_firstMediaClass, _firstSplit);
+                                }
+                                    
                             }
                         }
 
                         for (; i < scope.values.length; i += scope.options.splitSize) {
                             newArr.push(scope.values.slice(i, i + scope.options.splitSize));
                             if (scope.options && scope.options.splitClasses)
+                            {
+                                scope.options.splitClasses=scope.options.splitClasses+" "+scope.options.arraySplitCustomClass;
                                 createClassArray(scope.options.splitClasses, scope.options.splitSize);
+                            }
+                                
                         }
                     }
                     scope.splitItems = angular.copy(newArr);
                     scope.splitItemsClasses = angular.copy(classes);
-
+                    
+                    scope.splitterParentClass=[];
+                    if(scope.options.splitterParentClass)
+                    {
+                        for(var i=0; i<scope.splitItems.length; i++)
+                        {
+                            scope.splitterParentClass[i]=scope.options.splitterParentClass;
+                        }
+                    }
+                    
                     if (scope.options.calculateOnResize && arraySplitCommon.windowResized) {
                         scope.$apply();
                         arraySplitCommon.windowResized = false;
@@ -171,6 +189,7 @@
                         }
                     }
                 }
+                splitArray();
             }
         }
     }]);
