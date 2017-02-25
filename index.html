@@ -25,7 +25,11 @@
           </button>
           <a class="navbar-brand" href="#">Angular Bootstrap Row Splitter</a>
         </div>
-        
+          <ul class="nav navbar-nav">
+			  <li><a href="javascript:void(0)">Home</a></li>
+			  <li><a href="javascript:void(0)">Bootstrap Row</a></li>
+			  <li><a href="javascript:void(0)">Angular Splitter</a></li>
+		</ul>
       </div>
     </nav>
 	
@@ -49,19 +53,9 @@
    </div>
    
    <section>
-			<div class="row" >
-					<div ng-repeat="item in item1" class="col-sm-3">
-							<div class="panel panel-primary">
-								<div class="panel-header">
-								{{item.name}}
-								</div>
-								<div class="panel-body">
-								{{item.description}}
-								</div>
-							</div>
-					</div>
-			<div>
+			<div ng-view>
 			
+			<div>
    </section>
 </div>
 	

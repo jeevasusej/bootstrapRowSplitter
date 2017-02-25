@@ -1,6 +1,4 @@
-angular.module('demo',['jjBootstrapRowSplitter']);
-angular.module('demo').controller('demoController',['$scope',function($scope){
-	var data=[
+var data=[
 	{name:'Oscar Wilde', description:'To live is the rarest thing in the world. Most people exist, that is all.'}
 	,{name:'Narcotics Anonymous', description:'Insanity is doing the same thing, over and over again, but expecting different results.'}
 	,{name:'Ralph Waldo Emerson', description:"Finish each day and be done with it. You have done what you could. Some blunders and absurdities no doubt crept in; forget them as soon as you can. Tomorrow is a new day. You shall begin it serenely and with too high a spirit to be encumbered with your old nonsense."}
@@ -15,7 +13,39 @@ angular.module('demo').controller('demoController',['$scope',function($scope){
 	,{name:'Bill Watterson, The Complete Calvin and Hobbes', description:"Reality continues to ruin my life."}
 	,{name:'J.K. Rowling, Harry Potter and the Deathly Hallows', description:"Dumbledore watched her fly away, and as her silvery glow faded he turned back to Snape, and his eyes were full of tears."}
 	];
-	
+
+angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
+.config(function($routeProvider, $locationProvider) {
+  $routeProvider
+  .when("/", {
+        templateUrl : "_home.html"
+		controller: 'demoController',
+    })
+   .when('/BoostrapRows', {
+    templateUrl: '_bootstrapRows.html',
+    controller: 'boostrapRowsController',
+    resolve: {
+      delay: function($q, $timeout) {
+       
+      }
+    }
+  })
+  .when('/SplittedBoostrapRows', {
+    templateUrl: '_splittedBootstrapRows.html',
+    controller: 'splittedBoostrapRowsController'
+  });
+
+});
+angular.module('demo')
+.controller('boostrapRowsController',['$scope',function($scope){
+	//assign values
+	$scope.item1=angular.copy(data);
+}])
+.controller('splittedBoostrapRowsController',['$scope',function($scope){
 	// assign values
 	$scope.item1=angular.copy(data);
+}])
+.controller('demoController',['$scope',function($scope){
+	// assign values
+	//$scope.item1=angular.copy(data);
 }]);
