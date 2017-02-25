@@ -49,5 +49,5 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 	// assign values
 	//$scope.item1=angular.copy(data);
 }]).run(function($templateCache) {
-  $templateCache.put('templateId.html', 'This is the content of the template');
+  //$templateCache.put('templateId.html', 'This is the content of the template');
 });
