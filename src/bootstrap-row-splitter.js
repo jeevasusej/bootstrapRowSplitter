@@ -4,7 +4,7 @@
 (function () {
     'use strict';
     angular.module('jjBootstrapRowSplitter', [])
-	.directive('bootstrapRowSplitter', ['$filter', '$window', function ($filter, $window) {
+	.directive('bootstrapRowSplitter', ['$window', function ($window) {
          return {
             restrict: 'AE',
             scope: {
@@ -108,8 +108,8 @@
                     scope.splitItems = [], scope.splitItemsClasses = [];
                     newArr = [], classes = [], classIndex = 0;
                     var i = 0;;
-                    if (scope.options.customInit) {
-                        scope.values = scope.options.customInit();
+                    if (scope.options.initializeValue) {
+                        scope.values = scope.options.initializeValue();
                     }
 
                     if (scope.values) {

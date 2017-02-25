@@ -37,9 +37,19 @@
 			<div>
 </script>
 <script type="text/ng-template" id="_splittedBootstrapRows.html">
-  <div class="row" >
-					<div ng-repeat="item in item1" class="col-sm-3">
-							<div class="panel panel-primary">
+  <div class="splitted-item-wrapper " 
+         bootstrap-row-splitter
+         shared-values="vm.sharedValues"
+         options="vm.arraySplit.options"
+         template-url="{{vm.arraySplit.templateUrl}}"
+         events="vm.arraySplit.events">
+
+    </div>
+</script>
+<script type="text/ng-template" id="_template.html">
+ <div class="row mrg5B" ng-repeat="subItems in splitItems" ng-init="$parentIndex = $index">
+    <div ng-repeat="item in subItems" ng-class="splitItemsClasses[$parentIndex][$index]">
+		<div class="panel panel-primary">
 								<div class="panel-heading">
 								{{item.name}}
 								</div>
@@ -47,8 +57,9 @@
 								{{item.description}}
 								</div>
 							</div>
-					</div>
-			<div>
+	
+	</div>
+ </div>
 </script>
 <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -62,15 +73,15 @@
           <a class="navbar-brand" href="#">Angular Bootstrap Row Splitter</a>
         </div>
           <ul class="nav navbar-nav">
-			  <li><a href="/">Home</a></li>
+			  <li><a href="#/">Home</a></li>
 			  <li><a href="#/BoostrapRows">Bootstrap Row</a></li>
 			  <li><a href="#/SplittedBoostrapRows">Angular Splitter</a></li>
 		</ul>
       </div>
     </nav>
 	
-<div class="container">
-   <div class="page-header">
+<div class="container" style="margin-top:30px;">
+   <div class="page-header" style="padding-top:9px;">
     <h1>Angular Bootstrap Row Splitter </h1>
 	<p>
 		<div>

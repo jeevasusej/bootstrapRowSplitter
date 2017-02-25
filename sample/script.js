@@ -43,7 +43,33 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 }])
 .controller('splittedBoostrapRowsController',['$scope',function($scope){
 	// assign values
-	$scope.item1=angular.copy(data);
+	var vm=this;
+	
+	vm.sharedValues={$parentScope:vm};
+	vm.arraySplit={
+		templateUrl:'_template.html?v='+(new Date()).getTime(),
+		options:{
+				calculateOnResize: true,
+                initializeValue: function () {
+                    return angular.copy(data);
+                },
+                firstSplitSizes: {
+                    lg: 3
+                },
+                mediaSizes: {
+                    xs: 1,
+                    sm: 2,
+                    md: 3,
+                    lg: 4
+                }
+		},
+		events:{
+			
+		}
+	}
+	
+	vm.arraySplit.events.splitArray();
+	return vm;
 }])
 .controller('demoController',['$scope',function($scope){
 	// assign values
