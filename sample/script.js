@@ -18,11 +18,11 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when("/", {
-        templateUrl : "_home.html",
+        templateUrl : "template/_home.html",
 		controller: 'demoController'
     })
    .when('/BoostrapRows', {
-    templateUrl: '_bootstrapRows.html',
+    templateUrl: 'template/_bootstrapRows.html',
     controller: 'boostrapRowsController',
     resolve: {
       delay: function($q, $timeout) {
@@ -31,7 +31,7 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
     }
   })
   .when('/SplittedBoostrapRows', {
-    templateUrl: '_splittedBootstrapRows.html',
+    templateUrl: 'template/_splittedBootstrapRows.html',
     controller: 'splittedBoostrapRowsController'
   });
 
