@@ -16,6 +16,7 @@ var data=[
 
 angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 .config(function($routeProvider, $locationProvider) {
+	$locationProvider.hashPrefix('');
   $routeProvider
   .when("/", {
         templateUrl : "_home.html",
