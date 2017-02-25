@@ -35,8 +35,7 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
     controller: 'splittedBoostrapRowsController'
   });
 
-});
-angular.module('demo')
+})
 .controller('boostrapRowsController',['$scope',function($scope){
 	//assign values
 	$scope.item1=angular.copy(data);
