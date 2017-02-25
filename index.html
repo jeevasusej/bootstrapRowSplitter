@@ -16,11 +16,269 @@
 </head>
 <body ng-controller="demoController">
 <script type="text/ng-template" id="_home.html">
- <div class="row" >
-					<div class="col-xs-12">
-					Home
-					</div>
-			<div>
+
+<h1>Getting Started</h1><hr>
+
+ <h3>Requirements</h3><hr>
+ <p>
+	I hope it will work 1.3.x and higher, Since I am using the basic directive.
+</p>
+
+<h3>
+Files to download
+</h3>
+	<hr>
+
+<h4> <b> Add the files to your html</b></h4>
+<p>
+<code>
+	&lt;script src="src/bootstrap-row-splitter.js">&lt;/script>
+	or 
+	&lt;script src="src/bootstrap-row-splitter.min.js">&lt;/script>
+</code>
+</p>
+
+<p> 
+<b><h4>Add the module</h4></b>
+</p>
+<p>
+<kbd>
+	angular.module('yourModule','jjBootstrapRowSplitter');
+</kbd>
+</p>
+
+<h3>
+	Html code
+</h3>
+<pre>&lt;div class="splitted-item-wrapper"
+	bootstrap-row-splitter
+	shared-values="sharedValues"
+	options="arraySplit.options"
+	events="arraySplit.events"
+	template-url="&#123&#123 arraySplit.templateUrl '&#125;&#125;">
+	&lt;/div>
+</pre>
+
+<h3>Template code - Design based on your need - Refer id="_template.html" in sample</h3> <hr/>
+
+<h4> 
+<b>splitItems</b> - This is the array which is splitted from your actual array.
+
+</h4>
+<pre> <code> &lt;div class="row mrg5B" ng-repeat="subItems in splitItems"
+ 		ng-init="$parentIndex = $index"
+ 		ng-class="splitterParentClass[$parentIndex]">
+   		
+		   &lt;div ng-repeat="item in subItems" ng-class="splitItemsClasses[$parentIndex][$index]">
+				&lt;div class="panel" ng-class="sharedValues.$parentScope.getPanelClass($index)">
+					&lt;div class="panel-heading">
+						{{item.name'&#125;&#125;"
+					&lt;/div>
+				&lt;div class="panel-body">
+					{{item.description}}
+				&lt;/div>
+			&lt;/div>
+		&lt;/div>
+ &lt;/div>
+</code>
+</pre>
+
+<h3>Your code in controller</h3><hr/>
+
+<pre>
+// Here I have shared the controler scope for the directive.
+$scope.sharedValues={$parentScope:$scope};
+// Here I am calling to the controller to get the panel class
+$scope.getPanelClass=getPanelClass;
+
+// Array split object
+$scope.arraySplit={
+	templateUrl:'_template.html', // Template that should be opened
+	options:{
+			// calculate on window resize - default value false
+			calculateOnResize: true,
+			// Mandatory - This is used to get the data in the directive
+			initializeValue: function () {
+				return angular.copy(data);
+			},
+			// No of columns for the first row - This is optional
+			firstSplitSizes: {
+				lg: 3
+			},
+			// No of columns for the rows 
+			mediaSizes: {
+				xs: 1,
+				sm: 2,
+				md: 3,
+				lg: 4
+			},
+			// class name for the first row coulmns
+			firstSplitCustomClass:'firstSplitterClass',
+			// class name for the rows' columns
+			arraySplitCustomClass:'arraySplitterClass',
+			// class name for the rows
+			splitterParentClass:'row-divider'
+		},
+		events:{
+			
+		}
+	}
+	
+	$scope.splitItems=splitItems;
+	
+	// Called from the directive template
+	function getPanelClass(index){
+			if((index%4)==0)
+			return 'panel-primary';
+			else if((index%4)==1)
+			return 'panel-success';
+			else if((index%4)==2)
+			return 'panel-info';
+			else if((index%4)==3)
+			return 'panel-danger';
+	}
+
+	// <b>To split the array whenever we need</b>
+	function splitItems(){
+		$scope.arraySplit.events.splitArray();	
+	}
+</pre>
+
+<h3>
+	Configuration and options
+</h3>
+<hr/>
+<dl class="dl-horizontal">
+  <dt>
+	bootstrap-row-splitter
+  </dt>
+  <dd>
+	Directive to be included in your html
+  </dd>
+  <dt>
+	shared-values
+  </dt>
+  <dd>
+	That is shared to the directive from the controller
+  </dd>
+  <dt>
+	options
+  </dt>
+  <dd>
+	Options for the directive
+  </dd>
+  <dt>
+	events
+  </dt>
+  <dd>
+	Events that is shared from the directive to the controller.
+  </dd>
+  <dt>
+	template-url
+  </dt>
+  <dd>
+	Template that should be passed to show the data using ng-repeat
+  </dd>
+</dl>
+
+<h3>
+	Options
+</h3>
+<hr/>
+	<dl >
+  <dt>
+	Options - This is a object with the following properties
+  </dt>
+  <dd>
+	
+	<dl class="dl-horizontal">
+  <dt>
+	calculateOnResize
+  </dt>
+  <dd>
+	This is to recalculate the split array on window resize (Default is false)
+  </dd>
+  <dt>
+	initializeValue
+  </dt>
+  <dd>
+	<b>This is mandatory function for this directive</b> 
+	This is the function used to initialize the value. 
+	This is usually used to do manipulation before spliting the array.
+  </dd>
+  <dt>
+	firstSplitSizes
+  </dt>
+  <dd>
+	<b>This is the optional object. </b>
+	No of columns for the first row.
+	This should mentioned with the properties as {lg: 3, md:2,sm:3,xs:2} like that.
+  </dd>
+  <dt>
+	mediaSizes
+  </dt>
+  <dd>
+	<b>Mandatory object</b>
+	No of columns for the bootstrap rows.
+	This should mentioned with the properties as {lg: 3, md:2,sm:3,xs:2} like that.
+	If we missed to mention lg, then md size will be taken.
+	If we missed to mention md, then sm size will be taken.
+	If nothing has been mentioned, then size will be 1.
+  </dd>
+  <dt>
+	firstSplitCustomClass
+	</dt>
+	<dd>
+		Custom class for the first row coulmns.
+	</dd>
+	<dt>
+		arraySplitCustomClass
+	</dt>
+	<dd>Custom class for the row columns</dd>
+	<dt>
+		splitterParentClass
+	</dt>
+	<dd>custom class for the row</dd>
+  </dd>
+</dl>
+
+
+<h3>
+	Events
+</h3>
+<hr/>
+	<dl >
+  <dt>
+	<h4>Events - This is the <b>object</b> shared from directive to controller.</h4>
+  </dt>
+  <dd>
+	
+	<dl class="dl-horizontal">
+  <dt>
+	splitArray
+  </dt>
+  <dd>
+	Sometimes the directive will be initialized before we get the data from the server.
+	To split the array manually, call the following function from the controller.
+	<code>splitArray()</code>
+	
+  </dd>
+  <dt>
+	checkMedia
+  </dt>
+  <dd>
+	To check the media (Bootstrap media.). The following bootstrap media has been used.
+	<div>
+		 lg: "(min-width: 1200px)"<br/>
+                    md: "(min-width: 992px)"<br/>
+                    sm: "(min-width: 768px)"<br/>
+	</div>
+  </dd>
+  
+  </dd>
+</dl>
+
+
 </script>
 <script type="text/ng-template" id="_bootstrapRows.html">
  <div class="row" >
@@ -37,6 +295,7 @@
 			<div>
 </script>
 <script type="text/ng-template" id="_splittedBootstrapRows.html">
+	
 
   <div class="splitted-item-wrapper " 
          bootstrap-row-splitter
