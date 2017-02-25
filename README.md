@@ -7,7 +7,7 @@ So that the columns will not columns will not collapse.
 
 This works based on the bootstrap 3.3.7 based media queries.
 
-#<a href="https://jeevasusej.github.io/bootstrapRowSplitter">Demo and Documentation</a>
+#<a href="https://jeevasusej.github.io/bootstrapRowSplitter" target="_blank">Demo and Documentation</a>
 #Configuration and options
 
 * bootstrap-row-splitter  :    Directive to be included in your html
