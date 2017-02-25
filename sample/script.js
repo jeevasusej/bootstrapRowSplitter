@@ -68,7 +68,13 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 		}
 	}
 	
-	vm.arraySplit.events.splitArray();
+	vm.splitItems=splitItems;
+	
+	function splitItems(){
+		debugger
+		vm.arraySplit.events.splitArray();	
+	}
+	
 	return vm;
 }])
 .controller('demoController',['$scope',function($scope){
