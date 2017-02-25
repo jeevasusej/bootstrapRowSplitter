@@ -18,8 +18,8 @@ angular.module('demo',['ngRoute','jjBootstrapRowSplitter'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when("/", {
-        templateUrl : "_home.html"
-		controller: 'demoController',
+        templateUrl : "_home.html",
+		controller: 'demoController'
     })
    .when('/BoostrapRows', {
     templateUrl: '_bootstrapRows.html',
