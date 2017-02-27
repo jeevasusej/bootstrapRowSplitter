@@ -1,5 +1,5 @@
 # BootstrapRowSplitter
-For Angular ng-repeat, add 3 or 4 cols for every bootstrap row.
+Add bootstrap row while using ng-repeat.
 
 When we want to add bootrap columns in different hights, then the rows will collapse.
 So in that case we need to add the needed columns for every row.
