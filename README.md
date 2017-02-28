@@ -34,3 +34,14 @@ Events - This is the object shared from directive to controller.
 
 * splitArray              :   Sometimes the directive will be initialized before we get the data from the server. To split the array manually, call the following function from the controller. splitArray()
 * checkMedia              :   To check the media (Bootstrap media.). The following bootstrap media has been used. lg: "(min-width: 1200px)" - md: "(min-width: 992px)"  - sm: "(min-width: 768px)"
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92779140-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
