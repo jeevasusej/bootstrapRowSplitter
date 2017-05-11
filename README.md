@@ -1,4 +1,4 @@
-# Contact : You are free to contact me jeevasusej@gmail.com, if you have any queries.
+Contact : You are free to contact me jeevasusej@gmail.com, if you have any queries.
 # BootstrapRowSplitter
 Add bootstrap row while using ng-repeat.
 
